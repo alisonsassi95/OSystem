@@ -1,0 +1,5 @@
+- Criar a tela de cadastro do Cliente
+- Criar a tela de cadastro do ordem de servico
+- Criar a tela de cadastro do orçamento.
+- Criar a tela de listagem da ordem de servico.
+
