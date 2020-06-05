@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+use App\User;
+use App\People;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // para usar o SQL
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $Usuarios = DB::select('SELECT * FROM users');         
+        return view('home', [
+            'Usuarios' => $Usuarios,
+            ]);
     }
 }

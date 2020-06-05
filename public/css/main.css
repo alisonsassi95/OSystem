@@ -1,0 +1,22 @@
+.form-row{
+    margin-left: -1%;
+    margin-right: -1%
+}
+
+hr{
+    margin-top: 0%;
+    border: 1px solid green;
+    border-radius: 1px;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.div1{
+    margin-top: 2%;
+    margin-bottom: 4px;
+}
+
+.box {
+    margin-bottom: 1%;
+}
+
