@@ -126,10 +126,14 @@ Route::get('/people/detail/{id}', ['uses'=>'PeopleController@detail', 'as' => 'p
 Route::get('/telefone/add/{id}', ['uses'=>'TelefoneController@add', 'as' => 'telefone.add']);
 Route::post('/telefone/save/{id}', ['uses'=>'TelefoneController@save', 'as' => 'telefone.save']);
 
-Route::get('/agenda', 'EventController@index')->name('events.index');
-Route::get('/agendamento', 'EventController@index')->name('events.agenda');
-
-Route::post('/agenda', 'EventController@addEvent')->name('events.agenda');
+//Equipamentos
+Route::get('/equipament', ['uses'=>'EquipamentController@index', 'as' => 'equipament.index']);  
+Route::get('/equipament/add', ['uses'=>'EquipamentController@add', 'as' => 'equipament.add']);
+Route::get('/equipament/menu', ['uses'=>'EquipamentController@menu', 'as' => 'equipament.menu']);
+Route::post('/equipament/save', ['uses'=>'EquipamentController@save', 'as' => 'equipament.save']);
+Route::get('/equipament/edit/{id}', ['uses'=>'EquipamentController@edit', 'as' => 'equipament.edit']);
+Route::put('/equipament/update/{id}', ['uses'=>'EquipamentController@update', 'as' => 'equipament.update']);
+Route::get('/equipament/delete/{id}', ['uses'=>'EquipamentController@delete', 'as' => 'equipament.delete']);
 
 
 });

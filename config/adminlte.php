@@ -137,7 +137,7 @@ return [
         [
             'text' => 'Pessoas',
             'icon' => 'user-plus',
-            'can'  => 'user',
+            'can'  => 'adm',
             'url'  => '/people',
         ],
         [
@@ -145,6 +145,11 @@ return [
             'icon' => 'user-plus',
             'can'  => 'adm',
             'url'  => '/OS',
+        ],
+        [
+            'text' => 'Equipamentos',
+            'icon' => 'plug',
+            'url'  => '/equipament',
         ],
     ],
 

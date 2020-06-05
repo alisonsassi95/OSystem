@@ -16,10 +16,11 @@ class CreateEquipamentsTable extends Migration
         Schema::create('equipaments', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name', 45)->nullable(); 
-            $table->string('brand', 45)->nullable(); 
+            $table->string('mark', 45)->nullable();
             $table->string('model', 45)->nullable(); 
             $table->string('serialnumber', 50)->unique();
             $table->text('description')->nullable(); 
+            $table->boolean('active')->default(true); 
             $table->timestamps();
             $table->softDeletes();
         });
