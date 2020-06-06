@@ -18,9 +18,8 @@
                         <label for="profile" >Tipo</label>
                         <div required name="profile" class="auto-control" value="{{ old('profile') }}" required autofocus>
                         <select class="form-control"  id = "profile" name="profile" onchange="habilitaBtn()" >
-                            <option value="4">Paciente</option>
-                            <option value="3">Médico</option>
-                            <option value="2">Funcionário</option>
+                            <option value="1">Administrador</option>
+                            <option  selected value="2">Cliente</option>
                         </select>
                         @if($errors->has('profile'))
                         <span class="help-block">
@@ -28,31 +27,6 @@
                         </span>
                         @endif
                         </div>
-                    </div>
-
-					<!-- se clicar em Funcionario -->
-                    <div style="display:none" id='funcionario' value="{{ old('funcionario') }}" required autofocus class="form-group col-md-12 {{$errors->has('name') ? 'has-error' : '' }}">
-                            <label for="office">Cargo</label>
-                            <input id = "cargo" type="text" name="office" class="form-control" placeholder="Descreva o Cargo do Funcionário">
-                            <br>
-                            <label for="sector">Setor</label>
-                            <input type="text" name="sector" class="form-control" placeholder="Descreva o setor que trabalha">
-                    </div>
-
-                    <!-- se clicar em Medico -->
-                    <div style="display:none" id='medico' value="{{ old('medico') }}" class="form-group col-md-12 {{$errors->has('name') ? 'has-error' : '' }}">
-                        <label for="crm">CRM</label>
-                        <input type="text" id = "crm" name="crm" class="form-control" placeholder="CRM do Médico">
-                        <br>
-                        <label for="specialty_id" class="col-md-auto">Especialidade</label>
-                        <select class="form-control col-md-12"  name="specialty_id" id="specialty_id">
-                            <option value="">Selecione uma Especialidade</option>       
-                             @foreach($results as $specialty)
-                                <option value="{{ $specialty->id }}">{{ $specialty->name }}</option>
-                             @endforeach
-                        </select>
-                            <hr>
-                            <input type="button" class="form-control" value="Adicionar Especialidade" data-toggle="modal" data-target="#myModalcad">
                     </div>
 
                     <div class="form-group col-md-8 {{$errors->has('name') ? 'has-error' : '' }}" value="{{ old('name') }}">

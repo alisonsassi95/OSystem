@@ -1,6 +1,8 @@
 
 ## Instalação
 
+## Instalação
+
 Em uma pasta do seu computador, digitar no cmd =  git clone https://github.com/alisonsassi95/OSystem.git ("Irá fazer dowload do projeto");
 ; 
 DENTRO DA PASTA "OSystem" digitar = composer install (OBS: "Irá criar as pastas necessárias") ;
@@ -27,7 +29,7 @@ Login e senha padrão: ;
 *senha:*admin ;
 
 Att
-Alison Sassi
+Alison Sassi & Augusto Von Grafen
 
 
 

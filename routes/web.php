@@ -135,5 +135,13 @@ Route::get('/equipament/edit/{id}', ['uses'=>'EquipamentController@edit', 'as' =
 Route::put('/equipament/update/{id}', ['uses'=>'EquipamentController@update', 'as' => 'equipament.update']);
 Route::get('/equipament/delete/{id}', ['uses'=>'EquipamentController@delete', 'as' => 'equipament.delete']);
 
+//Order services
+Route::get('/orderService', ['uses'=>'orderServiceController@index', 'as' => 'orderService.index']);  
+Route::get('/orderService/add', ['uses'=>'orderServiceController@add', 'as' => 'orderService.add']);
+Route::get('/orderService/menu', ['uses'=>'orderServiceController@menu', 'as' => 'orderService.menu']);
+Route::post('/orderService/save', ['uses'=>'orderServiceController@save', 'as' => 'orderService.save']);
+Route::get('/orderService/edit/{id}', ['uses'=>'orderServiceController@edit', 'as' => 'orderService.edit']);
+Route::put('/orderService/update/{id}', ['uses'=>'orderServiceController@update', 'as' => 'orderService.update']);
+Route::get('/orderService/delete/{id}', ['uses'=>'orderServiceController@delete', 'as' => 'orderService.delete']);
 
 });

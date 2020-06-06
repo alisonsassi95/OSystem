@@ -144,12 +144,19 @@ return [
             'text' => 'Ordem de Servico',
             'icon' => 'user-plus',
             'can'  => 'adm',
-            'url'  => '/OS',
+            'url'  => '/orderService',
+        ],
+        [
+            'text' => 'Criar uma Ordem de Servico',
+            'icon' => 'user-plus',
+            'can'  => 'user',
+            'url'  => '/orderService',
         ],
         [
             'text' => 'Equipamentos',
             'icon' => 'plug',
             'url'  => '/equipament',
+            'can'  => 'adm',
         ],
     ],
 

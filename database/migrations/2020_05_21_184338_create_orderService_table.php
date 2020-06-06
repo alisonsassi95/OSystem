@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+$now = new DateTime();
+$datetime = $now->format('Y-m-d H:i:s'); 
 class CreateorderServiceTable extends Migration
 {
     /**
@@ -11,12 +13,13 @@ class CreateorderServiceTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('orderService', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->text('problem');
-            $table->time('data_hora');
+            $table->time('data_hora')->useCurrent()->nullable();
             $table->time('data_hora_entrega')->nullable();
             //Chave estrangeira de Equipamento
             $table->integer('equipaments_id')->unsigned()->nullable();
