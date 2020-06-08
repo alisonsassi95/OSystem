@@ -26,9 +26,8 @@ class EquipamentController extends Controller
     // Função responsavel por trazer todos os equipamentos cadastrados
     public function index()
     {
-        $TipoExame = user::all();
         $equipaments = $this->equipamentModel->paginate(20); // whereNotNull('rg')->
-        return view('equipament.index', ['equipaments' => $equipaments, 'TipoExame' => $TipoExame]);
+        return view('equipament.index', ['equipaments' => $equipaments]);
     }
     //Função responsável por exbibir o menu
     public function menu()
@@ -60,6 +59,22 @@ class EquipamentController extends Controller
             return redirect()
                 ->route('equipament.index')
                 ->with('success', 'Cadastrado com Sucesso!');
+            }
+        }
+    }
+    // Função Responsavel por salvar um novo equipamento no banco
+    public function saveModal(\App\Requests\EquipamentRequest $request)
+    {
+        $insert = 0;
+        try{
+            $insert = Equipament::create($request->all());
+        }catch(Exception $e){
+            echo('Erro!');
+        }finally{
+            if ($insert){
+            return redirect()
+                ->route('orderService.add')
+                ->with('success', 'Cadastrado com Sucesso! Complete o cadastro');
             }
         }
     }

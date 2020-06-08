@@ -19,8 +19,8 @@ class CreateorderServiceTable extends Migration
         Schema::create('orderService', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->text('problem');
-            $table->time('data_hora')->useCurrent()->nullable();
-            $table->time('data_hora_entrega')->nullable();
+            $table->DATETIME('data_hora')->nullable();
+            $table->DATETIME('data_hora_entrega')->nullable();
             //Chave estrangeira de Equipamento
             $table->integer('equipaments_id')->unsigned()->nullable();
             $table->foreign('equipaments_id')->references('id')->on('equipaments');

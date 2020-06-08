@@ -7,7 +7,6 @@ use App\user;
 use App\People;
 use App\Equipament;
 use Illuminate\Http\Request;
-use App\Requests\orderServiceRequest;
 use App\Requests\userRequest;
 use Alert;
 use Illuminate\Support\Facades\DB; // para usar o SQL
@@ -41,9 +40,12 @@ class orderServiceController extends Controller
     // Função responsavel por trazer todos os orderServiceos cadastrados
     public function index()
     {
-        $peoples = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
+        $People = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
         $orderServices = $this->orderServiceModel->paginate(20); // whereNotNull('rg')->
-        return view('orderService.index', ['orderServices' => $orderServices,'peoples' => $peoples, ]);
+        $Equipament = DB::select('SELECT * FROM equipaments WHERE equipaments.id = 1');
+
+        
+        return view('orderService.index', ['orderServices' => $orderServices,'People' => $People,'Equipament' => $Equipament, ]);
     }
     //Função responsável por exbibir o menu
     public function menu()
@@ -60,17 +62,16 @@ class orderServiceController extends Controller
     public function add()
     {
         $user = user::all();
-        $teste = DB::select('SELECT * FROM peoples WHERE peoples.id = 1')->get();
+        $teste = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
         $equipaments = Equipament::all();
 
         return view('orderService.add', [
-            'user' => $user, 
-            'teste' => $teste, 
+            'user' => $user,          
             'equipaments' => $equipaments,
             ]);
     }
     // Função Responsavel por salvar um novo orderServiceo no banco
-    public function save(\App\Requests\orderService $request)
+    public function save(\App\Requests\orderServiceRequest $request)
     {
         $insert = 0;
         try{
@@ -90,6 +91,7 @@ class orderServiceController extends Controller
     {
         $orderService = orderService::find($id);
         $results = user::all();
+        $equipaments = Equipament::all();
         if(!$orderService){
             \Session::flash('flash_message', [
                 'msg'=>"Não existe esse orderServiceo cadastrado, deseja cadastrar um novo orderServiceo?",
@@ -97,7 +99,7 @@ class orderServiceController extends Controller
             ]);
             return redirect()->back();
         }
-        return view('orderService.edit', ['orderService' => $orderService,'results' => $results]);
+        return view('orderService.edit', ['orderService' => $orderService,'results' => $results, 'equipaments' => $equipaments,]);
         
     }
     // Função Responsavel por salvar a edição de um orderServiceo

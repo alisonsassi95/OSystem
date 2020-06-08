@@ -11,10 +11,10 @@ class Equipament extends Model
     protected $fillable = [
         'name',
         'model',
+        'mark',
         'serialnumber',
         'active',
-        'description',
-        'examtype_id',   
+        'description',  
     ];
 
 }

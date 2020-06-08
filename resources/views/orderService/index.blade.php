@@ -24,20 +24,29 @@
                             <th>Nome do Cliente</th>
                             <th>Equipamento</th>
                             <th>Problema</th>
-                            <th>Data</th>
+                            <th>Data Solicitação</th>
                             <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                               
-                        @foreach($orderServices as $orderService)
-                        
                         <tr>
+                        
+                        @foreach($People as $People)
+                        <td>{{ $People->name }}</td>
+                        @endforeach
+
+                        @foreach($Equipament as $Equipament)
+                        <td>{{ $Equipament->name }}</td>
+                        @endforeach
+                        
+                        @foreach($orderServices as $orderService)
                                 <td>{{ $orderService->problem }}</td>
+                                <td>{{ $orderService->data_hora }}</td>
                                 <td>
                                     <a class="btn btn-default" href="{{route('orderService.edit',$orderService->id)}}"><i class="glyphicon glyphicon-edit"></i >Editar</a>
                                     <a class="btn btn-danger" href="{{route('orderService.delete',$orderService->id)}}' : false)"><i class="glyphicon glyphicon-trash"></i >Deletar</a>
                                 </td>
+                               
                             <tr>
                         
                         @endforeach

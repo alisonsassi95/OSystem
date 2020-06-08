@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Equipamentos')
+@section('title', 'Editar Equipamento')
 
 @section('content')
 <div class="box box-primary">
@@ -15,18 +15,16 @@
                         <input type="hidden" name="_method" value="put">
                         <div class="form-group">
 
-
-
-                                <div class="form-group {{$errors->has('name') ? 'has-error' : '' }}">
+                                    <div class="form-group {{$errors->has('name') ? 'has-error' : '' }}">
                                         <label for="name">Nome</label>
-                                        <input type="text" value="{{$equipament->name}}" name="name" class="form-control" placeholder="Nome do Equipamento">
-                                    @if($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{$errors->first('name')}}</strong>
-                                    </span>
-                                    @endif
+                                        <input type="text" name="name" class="form-control" value="{{$equipament->name}}" placeholder="Nome do Equipamento">
+                                        @if($errors->has('name'))
+                                        <span class="help-block">
+                                            <strong>{{$errors->first('name')}}</strong>
+                                        </span>
+                                        @endif
                                     </div>
-            
+
                                     <div class="form-group">
                                         <label for="model">Modelo</label>
                                         <input type="text" value="{{$equipament->model}}" name="model" class="form-control" placeholder="Modelo do Equipamento">
@@ -36,7 +34,17 @@
                                     </span>
                                     @endif
                                     </div>
-            
+
+                                    <div class="form-group">
+                                        <label for="mark">Marca</label>
+                                        <input type="text" name="mark" value="{{$equipament->mark}}" class="form-control" placeholder="marko do Equipamento">
+                                        @if($errors->has('mark'))
+                                        <span class="help-block">
+                                            <strong>{{$errors->first('mark')}}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                        
                                     <div class="form-group {{$errors->has('serialnumber') ? 'has-error' : '' }}">
                                         <label for="serialnumber">Número de Série</label>
                                         <input type="text" value="{{$equipament->serialnumber}}" name="serialnumber" class="form-control" placeholder="Numero de Série do equipamento">
@@ -55,19 +63,7 @@
                                                  <option value="0">Inativo</option>
                                              </select>
                                     </div>
-
-      
-                                        <label for="status">Tipo de Equipamento</label>
-                                        <select class="form-control"  name="examtype_id" id="examtype_id">
-                                            @foreach($results as $examtype)
-                                             @if($equipament->examtype_id == $examtype->id )
-                                                <option value= "{{ $examtype->id }}" >{{$examtype->name}}</option>
-                                            @endif
-                                            <option value="{{$examtype->id}}">{{$examtype->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <br>
-                                       
+ 
                                     <div class="form-group {{$errors->has('description') ? 'has-error' : '' }}">
                                     <label for="description">Descrição</label>
                                         <textarea for="description" value="{{$equipament->description}}" type="text" id="description" class="form-control rounded-0 {{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="{{ old('description') }}" required autofocus>Descrição</textarea>
