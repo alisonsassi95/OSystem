@@ -10,6 +10,7 @@ class People extends Model
     //Declaração de arquivos protegidos e não protegidos
     protected $table = 'peoples';
      protected $fillable = [
+        'profile',
         'name',
         'birthdate',
         'genre',
@@ -23,28 +24,8 @@ class People extends Model
         'telephone',
         'email',
         'obs',
-        'profile',
-        'crm',
-        'office',
-        'sector',
         'state',
-        'city',
-        'specialty_id'
+        'city'
     ];
 
-    /*public function telephone(){
-        return $this->hasMany('App\Telefone');
-    }
-
-    public function addTelephone(Telephone $tel){
-        return $this->telephone()->save($tel);
-    }
-
-    public function deleteTelephone()
-    {
-        foreach($this->telephone as $tel){
-            $tel->delete();
-        }
-        return true;
-    }*/
 }

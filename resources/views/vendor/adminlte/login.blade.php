@@ -1,21 +1,37 @@
-@extends('adminlte::master')
+<!DOCTYPE html>
+<html lang="pr-br">
 
-@section('adminlte_css')
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
-    @yield('css')
-@stop
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-@section('body_class', 'login-page')
+    <link rel="stylesheet" href="{{ asset('../css/main2.css') }}">
+    <link rel="stylesheet" href="{{ asset('../css/contact.css') }}">
+    <script src="{{ asset('../js/main.js') }}"><\script>
 
-@section('body')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-    <div class="login-box">
-        <div class="login-logo">
-            <img src="{{ asset('img/logo/logo_p.png') }}" alt="">
-            <h2>LOGIN O System</h2>
+    <title>OSystem</title>
+</head>
+
+<ul class="navbar">
+    <li class="navbar-item"><a href="{{ route('main')}}">Inicio</a></li>
+    <li class="navbar-item"><a href="{{ route('whoareus')}}">Quem somos</a></li>
+    <li class="navbar-item"><a href="{{ route('prices')}}">Preços</a></li>
+    <li class="navbar-item"><a href="{{ route('contact')}}">Contato</a></li>
+    <li class="navbar-item"><a class="active" href="{{ route('login')}}">Área do Cliente</a></li>
+</ul>
+
+<div class="container">
+    <header>
+        <div class="row">
+            <h1>Entre com suas credênciais para logar</h1>
         </div>
-        <!-- /.login-logo -->
+    </header>
+
+    <body>
+    <div class="login-box">
         <div class="login-box-body">
             <p class="login-box-msg">Entre com suas credênciais para logar</p>
             <form action="authentication" method="post">
@@ -47,26 +63,19 @@
                         <button type="submit"
                                 class="btn btn-primary btn-block btn-flat">Login</button>
                     </div>
-
-                    <div class="col-xs-4"><a href="{{ route('main')}}">Voltar a página inicial</a></div>
                     <!-- /.col -->
                 </div>
             </form>
         </div>
         <!-- /.login-box-body -->
     </div><!-- /.login-box -->
-@stop
+    </body>
 
-@section('adminlte_js')
-    <script src="{{ asset('vendor/adminlte/plugins/iCheck/icheck.min.js') }}"></script>
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
-    @yield('js')
-@stop
+</div>
+
+<footer class=" footer">
+    <p>© 2020 Feito com <b style="color: red;">❤</b> por Vongrafen&Sassi Company. Todos os direitos reservados</p>
+    <p class="pol"><a href="#politica">Política de Privacidade</a> | <a href="#termos">Termos de Uso</a> | <a href="#empregos">Empregos</a> | <a href="#investidores">Investidores</a> | <a href="#conosco">Fale Conosco</a></p>
+</footer>
+
+</html>

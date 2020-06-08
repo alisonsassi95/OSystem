@@ -24,7 +24,9 @@ class PeopleRequest extends FormRequest
             'email.required'=>'Preencha um e-mail',
             'email.email'=>'Preencha um e-mail válido',
             'email.max'=>'E-mail deve ter até 255 caracteres',
-            'address.required'=>'Preencha um endereço'
+            'address.required'=>'Preencha um endereço',
+            'cpf.required'=>'Preencha um cpf'
+
         ];
     }
 
@@ -38,7 +40,8 @@ class PeopleRequest extends FormRequest
         return [
             'name'=>'required|max:255',
             'email'=>'required|email|max:255',
-            'address'=>'required'
+            'address'=>'required',
+            'cpf'=>'required'
         ];
     }
 }

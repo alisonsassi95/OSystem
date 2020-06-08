@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('profiles')->insert([
             ['id' => 1, 'name' => 'Administrador', 'description' => 'Administrador do sistema'],
-            ['id' => 2, 'name' => 'Cliente', 'description' => 'O cliente da empresa.']
+            ['id' => 2, 'name' => 'Cliente', 'description' => 'Cliente da empresa.']
         ]);
         DB::table('peoples')->insert([
             ['id' => 1, 'name' => 'Administrador', 'birthdate' => '2999-01-01', 'genre' => 'M', 'cpf' => '12345677890','rg' => '1234567789', 'address' => 'Rua', 'number' => '12345',  'district' => 'Admin',  'complement' => 'Sem complemento', 'cep' => '987654321', 'state' => 'RS', 'city' => 'Ijuí', 'telephone' => '9978988765', 'email' => 'Admin@Admin.com', 'obs' => 'ele é o adin', 'profile' => '1'],
