@@ -1,0 +1,102 @@
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background-image: url(https://cftaft.com/wp-content/uploads/2016/03/white-background-wallpaper-2956247.jpg);
+  }
+  
+  .card {
+    margin-left: -30%;
+  }
+  
+  ul.navbar {
+    width: 100%;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+  }
+  
+  ul.navbar li {
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    
+  }
+  
+  ul.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  ul.navbar li a:hover:not(.active) {background-color: #111;}
+  
+  ul.navbar li a.active {
+    background-color: orange;
+    font-weight: bold;
+    color: black;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  ul.navbar li.right {float: right;}
+  
+  @media screen and (max-width: 600px) {
+    ul.navbar li.right, 
+    ul.navbar li {float: none;}
+  }
+  
+  footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    overflow: hidden;
+    background-color: black;
+  }
+  
+  footer p{
+    color: white;
+    line-height: 2px;
+    text-align: center;
+  }
+  
+  footer p.pol{
+    font-weight: bold;
+  }
+  
+  footer ul{
+    color: white;
+    list-style-type: none;
+    display: inline;
+  }
+  
+  /* link que ainda não foi visitado */
+  a:link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* link que foi visitado */
+  a:visited {
+     color: white;
+     text-decoration: none;
+  }
+  
+  /* mouse over */
+  a:hover {
+     color: orange;
+  }
+  
+  /* link selecionado */
+  a:active {
+     color: rgb(255, 191, 95);
+     text-decoration: none;
+  }
+  © 2020 GitHub, I

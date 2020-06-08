@@ -41,8 +41,9 @@ class orderServiceController extends Controller
     // Função responsavel por trazer todos os orderServiceos cadastrados
     public function index()
     {
+        $peoples = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
         $orderServices = $this->orderServiceModel->paginate(20); // whereNotNull('rg')->
-        return view('orderService.index', ['orderServices' => $orderServices]);
+        return view('orderService.index', ['orderServices' => $orderServices,'peoples' => $peoples, ]);
     }
     //Função responsável por exbibir o menu
     public function menu()
@@ -59,9 +60,14 @@ class orderServiceController extends Controller
     public function add()
     {
         $user = user::all();
-        $peoples = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
+        $teste = DB::select('SELECT * FROM peoples WHERE peoples.id = 1')->get();
         $equipaments = Equipament::all();
-        return view('orderService.add', ['user' => $user, 'people' => $peoples, 'equipaments' => $equipaments]);
+
+        return view('orderService.add', [
+            'user' => $user, 
+            'teste' => $teste, 
+            'equipaments' => $equipaments,
+            ]);
     }
     // Função Responsavel por salvar um novo orderServiceo no banco
     public function save(\App\Requests\orderService $request)

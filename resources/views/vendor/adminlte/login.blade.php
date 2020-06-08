@@ -47,6 +47,8 @@
                         <button type="submit"
                                 class="btn btn-primary btn-block btn-flat">Login</button>
                     </div>
+
+                    <div class="col-xs-4"><a href="{{ route('main')}}">Voltar a página inicial</a></div>
                     <!-- /.col -->
                 </div>
             </form>

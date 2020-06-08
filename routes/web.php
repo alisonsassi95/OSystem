@@ -15,11 +15,11 @@ Route::get('/', function () {
     return redirect('main');
 });
 
-    route::view('/main', "vendor.adminlte.main")->name('main');
-    route::view('/whoareus', "vendor.adminlte.whoareus")->name('whoareus');
-    route::view('/ourservices', "vendor.adminlte.ourservices")->name('ourservices');
-    route::view('/contact', "vendor.adminlte.contact")->name('contact');
-    route::view('/clients', "vendor.adminlte.clients")->name('clients');
+    route::view('/main', "index.main")->name('main');
+    route::view('/whoareus', "index.whoareus")->name('whoareus');
+    route::view('/ourservices', "index.ourservices")->name('ourservices');
+    route::view('/contact', "index.contact")->name('contact');
+    route::view('/prices', "index.prices")->name('prices');
 
     //Route::get('/main', 'Auth\RegisterController@main')->name('main');
     Route::get('/login', 'Auth\LoginController@isLogged')->name('login');
