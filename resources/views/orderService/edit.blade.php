@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Equipamentos')
+@section('title', 'Editar Ordem de serviço')
 
 @section('content')
 <div class="box box-primary">
     <div class="box-header with-border">
-       <h3 class="box-title">Editar Equipamento</h3>
+       <h3 class="box-title">Editar Ordem de serviço</h3>
     </div>
     <div role="form">
     <div class="box-body">
 
-                    <form action="{{ route('equipament.update', $equipament->id) }}" method="post">
+                    <form action="{{ route('orderService.update', $orderService->id) }}" method="post">
                     {{ csrf_field() }}
                         <input type="hidden" name="_method" value="put">
                         <div class="form-group">

@@ -40,9 +40,9 @@ class orderServiceController extends Controller
     // Função responsavel por trazer todos os orderServiceos cadastrados
     public function index()
     {
-        $People = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
+        $People = DB::select('SELECT * FROM peoples');
         $orderServices = $this->orderServiceModel->paginate(20); // whereNotNull('rg')->
-        $Equipament = DB::select('SELECT * FROM equipaments WHERE equipaments.id = 1');
+        $Equipament = DB::select('SELECT * FROM equipaments');
 
         
         return view('orderService.index', ['orderServices' => $orderServices,'People' => $People,'Equipament' => $Equipament, ]);
