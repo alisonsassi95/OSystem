@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
 
         DB::table('equipaments')->insert([
             ['id' => 1, 'name' => 'Notebook', 'mark' => 'Dell', 'model' => 'N564P', 'serialnumber' => '123598765432', 'description' => 'Preto', 'peoples_id' => '1'],
-            ['id' => 2, 'name' => 'Computador', 'mark' => 'Dell', 'model' => 'N564P', 'serialnumber' => '0987623765', 'description' => 'Amassado', 'peoples_id' => '1'],
-            ['id' => 3, 'name' => 'Notebook', 'mark' => 'Acer', 'model' => 'U865', 'serialnumber' => '3243242342342', 'description' => 'Branco', 'peoples_id' => '1']
+            ['id' => 2, 'name' => 'Computador', 'mark' => 'Dell', 'model' => 'N564P', 'serialnumber' => '0987623765', 'description' => 'Amassado', 'peoples_id' => '2'],
+            ['id' => 3, 'name' => 'Notebook', 'mark' => 'Acer', 'model' => 'U865', 'serialnumber' => '3243242342342', 'description' => 'Branco', 'peoples_id' => '3']
         ]);
 
         DB::table('estimate')->insert([
