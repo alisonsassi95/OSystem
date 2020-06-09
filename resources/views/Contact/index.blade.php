@@ -40,8 +40,8 @@
                                 <td>{{ $Contacts->email }}</td>
                                 <td>{{ $Contacts->description }}</td>
                                 <td>
-                                    <a class="btn btn-default" href="{{route('Contact.edit',$Contact->id)}}"><i class="glyphicon glyphicon-edit"></i >Editar</a>
-                                    <a class="btn btn-danger" href="{{route('Contact.delete',$Contact->id)}}' : false)"><i class="glyphicon glyphicon-trash"></i >Deletar</a>
+                                    <a class="btn btn-default" href="{{route('Contact.edit',$Contacts->id)}}"><i class="glyphicon glyphicon-edit"></i >Editar</a>
+                                    <a class="btn btn-danger" href="{{route('Contact.delete',$Contacts->id)}}' : false)"><i class="glyphicon glyphicon-trash"></i >Deletar</a>
                                 </td>
                             <tr>
                         

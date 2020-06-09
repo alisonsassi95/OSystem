@@ -142,13 +142,13 @@ return [
         ],
         [
             'text' => 'Ordem de Servico',
-            'icon' => 'user-plus',
+            'icon' => 'fa fa-edit',
             'can'  => 'adm',
             'url'  => '/orderService',
         ],
         [
             'text' => 'Criar uma Ordem de Servico',
-            'icon' => 'user-plus',
+            'icon' => 'fa fa-edit',
             'can'  => 'user',
             'url'  => '/orderService',
         ],
@@ -160,7 +160,7 @@ return [
         ],
         [
             'text' => 'Contatos Parceiros',
-            'icon' => 'smile-o',
+            'icon' => 'fa fa-hand-peace-o',
             'url'  => '/Contact',
             'can'  => 'adm',
         ],

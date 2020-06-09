@@ -52,6 +52,7 @@ class ContactController extends Controller
     // Função Responsavel por trazer a tela de edição de Contactos
     public function edit ($id)
     {
+        
         $Contact = Contact::find($id);
         $results = user::all();
         if(!$Contact){

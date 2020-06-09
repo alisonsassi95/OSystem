@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
         
         DB::table('orderservice')->insert([
             ['id' => 1, 'problem' => 'está muito Lento', 'data_hora' => '2020-06-02 10:00:00', 'equipaments_id' => '1', 'peoples_id' => 1, 'estimate_id' => '1', 'status_id' => '6'],
-            ['id' => 2, 'problem' => 'Muito Lento', 'data_hora' => '2020-07-02 17:00:00', 'equipaments_id' => '2', 'peoples_id' => 1, 'estimate_id' => '2', 'status_id' => '4'],
-            ['id' => 3, 'problem' => 'Quebrou a tela','data_hora' => '2020-05-01 12:00:00', 'equipaments_id' => '3', 'peoples_id' => 1, 'estimate_id' => '3', 'status_id' => '5']
+            ['id' => 2, 'problem' => 'Muito Lento', 'data_hora' => '2020-07-02 17:00:00', 'equipaments_id' => '2', 'peoples_id' => 2, 'estimate_id' => '2', 'status_id' => '4'],
+            ['id' => 3, 'problem' => 'Quebrou a tela','data_hora' => '2020-05-01 12:00:00', 'equipaments_id' => '3', 'peoples_id' => 3, 'estimate_id' => '3', 'status_id' => '5']
         ]); 
         DB::table('contact')->insert([
             ['id' => 1, 'name' => 'Nvidea', 'cnpj' => '52632563256325', 'contact_phone' => '333333555', 'email' => 'nvidea@nvidea.com', 'description' => 'Vocês são demais! gostaríamos de patrocinar qualque coisa que forem fazer.'],
