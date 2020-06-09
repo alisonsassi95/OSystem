@@ -17,7 +17,8 @@
                         
                         <div  class=" form-group col-md-1">
                             <input  readOnly = "true" type="text" name="peoples_id" value="{{ $people->id }}" class="form-control"></div>
-                            <h4>Olá {{ $people->name}}, descreva o problema do seu equipamento.</h4>
+                            <h4>Seja bem-vindo(a) <b>{{ $people->name}}</b>, estamos sempre dispostos à ajudar.</h4>
+                            <h4>Cadastre seu equipamento, e descreva o problema.</h4>
                         </div>
                             
                         <div class="form-group">
@@ -30,12 +31,12 @@
                             </select>
                         </div>
 
-                        <input type="button" class="form-control" value="Adicionar Novo Equipamento" data-toggle="modal" data-target="#myModalcad">
-
+                        <input type="button" class="btn btn-primary" value="Adicionar Novo Equipamento" data-toggle="modal" data-target="#myModalcad">
+                        <br><br><br>
 
                         <div class="form-group {{$errors->has('problem') ? 'has-error' : '' }}">
                             <label for="problem">Problema</label>
-                            <input type="text" name="problem" class="form-control" placeholder="Problema da orderServiceo">
+                            <textarea class="form-control" type="textarea" cols="50" rows="8" name="problem" placeholder="Descreva o problema do equipamento." required></textarea>
                             @if($errors->has('problem'))
                             <span class="help-block">
                                 <strong>{{$errors->first('problem')}}</strong>
@@ -47,13 +48,8 @@
                             <label for="data_hora">Data de solicitação</label>
                             <input readOnly = "true" type="datetime" name="data_hora" class="form-control" value="<?php echo date('Y-m-d h:m:s');?>" placeholder="Data Atual">
                         </div>
-
-                        <div class=" form-group col-md-3" value="{{ old('data_hora_entrega') }}">
-                            <label for="data_hora_entrega">Data de Entrega</label>
-                            <input type="date" name="data_hora_entrega" class="form-control" placeholder="Data de entrega">
-                        </div>
-
-                       
+                     <br><br><br>
+                     <br><br>
                         <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Criar ordem de serviço</button> 
 
                     </form>

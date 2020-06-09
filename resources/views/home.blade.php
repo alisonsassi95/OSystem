@@ -17,7 +17,7 @@
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Ordem de serviço Solicitados</span>
-              <span class="info-box-number">12</span>
+              <span class="info-box-number">{{count($orderServicesrequested)}}</span>
           </div>
       </div>
     </div> 
@@ -26,7 +26,7 @@
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Ordem de serviço Realizados</span>
-              <span class="info-box-number">2</span>
+              <span class="info-box-number">{{count($orderServicesrealized)}}</span>
             </div>
         </div>
     </div>        
@@ -48,8 +48,8 @@
                                 <td>{{ $orderService->data_solicitacao }}</td>
                                 <td>{{ $orderService->equipaments }}</td>
                                 <td>{{ $orderService->problem }}</td>
-                                <td>85.00</td>
-                                <td>sim</td>
+                                <td>{{ $orderService->value }}</td>
+                                <td data-toggle="tooltip" title="{{$orderService->statusDescricao}}" >{{ $orderService->status }}</td>
                                 <td>
                                 <a class="btn btn-default" href=""><i class="glyphicon glyphicon-edit"></i > Sim</a>
                                 <a class="btn btn-default" href=""><i class="glyphicon glyphicon-edit"></i > Não</a>
@@ -86,7 +86,7 @@
           <span class="info-box-icon bg-green"><i class="ion ion-ios-pricetag-outline"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">OS em Aberto</span>
-            <span class="info-box-number">{{count($Clientes)}}<small></small></span>
+            <span class="info-box-number">{{count($orderServicesrequested)}}<small></small></span>
             </div>
           </div>
         </div>
@@ -94,8 +94,8 @@
           <div class="info-box">
           <span class="info-box-icon bg-red"><i class="ion ion-ios-pricetag-outline"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">OS Pendentes</span>
-            <span class="info-box-number">{{count($Clientes)}}<small></small></span>
+              <span class="info-box-text">OS Concluidas</span>
+            <span class="info-box-number">{{count($orderServicesrealized)}}<small></small></span>
             </div>
           </div>
         </div>
@@ -108,24 +108,19 @@
                             <th>Equipamento</th>
                             <th>Problema</th>
                             <th>Data Solicitação</th>
-                            <th>Ação</th>
                             </tr>
                         </thead>
-                        <tbody>
+              <tbody>
                         <tr>
-                        @foreach($orderServices as $orderService)
-                                <td>{{ $orderService->peoples }}</td>
-                                <td>{{ $orderService->equipaments }}</td>
-                                <td>{{ $orderService->problem }}</td>
-                                <td>{{ $orderService->data_solicitacao }}</td>
-                                <td>
-                                    <a class="btn btn-default" href="{{route('orderService.edit',$orderService->id)}}"><i class="glyphicon glyphicon-edit"></i >Editar</a>
-                                    <a class="btn btn-danger" href="{{route('orderService.delete',$orderService->id)}}' : false)"><i class="glyphicon glyphicon-trash"></i >Deletar</a>
-                                </td>
+                        @foreach($orderServices as $orderServices)
+                                <td>{{ $orderServices->peoples }}</td>
+                                <td>{{ $orderServices->equipaments }}</td>
+                                <td>{{ $orderServices->problem }}</td>
+                                <td>{{ $orderServices->data_solicitacao }}</td>   
                             <tr>
                         @endforeach
                             
-                        </tbody>
+            </tbody>
           </table>
         </div>    
     @endcannot('user')

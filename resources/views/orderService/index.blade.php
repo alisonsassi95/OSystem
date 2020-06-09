@@ -38,12 +38,13 @@
                                 <td>{{ $orderService->problem }}</td>
                                 <td>{{ $orderService->data_solicitacao }}</td>
                                 <td>{{ $orderService->value }}</td>
-                                <td>{{ $orderService->status }}</td>
+                                <td data-toggle="tooltip" title="{{$orderService->statusDescricao}}" >{{ $orderService->status }}</td>
                                 <td>
                                     <a class="btn btn-default" href="{{route('orderService.edit',$orderService->id)}}"><i class="glyphicon glyphicon-edit"></i >Editar</a>
+                                    @cannot('user')                               
                                     <a class="btn btn-primay" type="button" value="Adicionar Novo Equipamento" data-toggle="modal" data-target="#myModalcad"><i class="glyphicon glyphicon-eur"></i >Orçar</a>
                                     <a class="btn btn-danger" href="{{route('orderService.delete',$orderService->id)}}' : false)"><i class="glyphicon glyphicon-trash"></i >Deletar</a>
-                                    
+                                    @endcannot('user')
 
                                 </td>
                             <tr>
@@ -73,8 +74,18 @@
                                                     
                                                     <div class="form-group">
                                                     <label for="name">Id Solicitaçao</label>
-                                                    <input readOnly = "true" type="text" name="id_solicitacao" class="form-control" value = '{{ $orderService->id }}' >
-                                                </div>
+                                                        <select class="form-control" name = 'orderServices'>     
+                                                            @foreach($orderServices as $orderServices)
+                                                            <option readOnly = "true" id = 'id_solicitacao' value="{{ $orderServices->id }}"></option>
+                                                                @endforeach
+                                                        </select>
+                                                        @if($errors->has('id_solicitacao'))
+                                                    <span class="help-block">
+                                                        <strong>{{$errors->first('id_solicitacao')}}</strong>
+                                                    </span>
+                                                    @endif
+                                                     </div>
+
 
                                                     <div class="form-group {{$errors->has('service') ? 'has-error' : '' }}">
                                                     <label for="name">Serviço</label>

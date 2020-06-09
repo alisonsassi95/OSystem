@@ -43,21 +43,30 @@ class orderServiceController extends Controller
     public function index()
     {
         $user = auth()->user()->people_id;
-         
-        $orderServices = DB::select('SELECT 
+        $perfil = auth()->user()->profile;
+        $sql = ('SELECT 
         orderservice.id,
         peoples.name as peoples, 
         equipaments.name as equipaments, 
         orderservice.problem as problem, 
         DATE_FORMAT(orderservice.data_hora , "%d/%m/%Y" ) as data_solicitacao,
         estimate.value as value,
-        status.name as status
+        status.name as status,
+        status.description as statusDescricao
         FROM orderservice
         left join equipaments ON equipaments.id = orderservice.equipaments_id
         left join peoples on peoples.id = orderservice.peoples_id
         left join estimate on estimate.id = orderservice.estimate_id
-        left join status on status.id = orderservice.status_id
-        WHERE peoples.id=' . $user); 
+        left join status on status.id = orderservice.status_id');
+
+
+
+        if($perfil =='Cliente'){
+            $Result = ($sql . ' WHERE peoples.id =' . $user);
+        }else{
+            $Result = ($sql);
+        }        
+        $orderServices = DB::select($Result);  
       
       $StatusAll = DB::select('SELECT * FROM status');
 
@@ -106,7 +115,7 @@ class orderServiceController extends Controller
             if ($insert){
             return redirect()
                 ->route('orderService.index')
-                ->with('success', 'Cadastrado com Sucesso!');
+                ->with('success', 'Sua Ordem de serviço foi criada!     Aguarde um contato.');
             }
         }
     }

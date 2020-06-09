@@ -30,22 +30,55 @@ class HomeController extends Controller
     {
          
         $user = auth()->user()->people_id;
-        $orderServices = DB::select('SELECT 
+        $perfil = auth()->user()->profile;
+        
+        $sql = ('SELECT 
         orderservice.id,
         peoples.name as peoples, 
         equipaments.name as equipaments, 
         orderservice.problem as problem, 
-        DATE_FORMAT(orderservice.data_hora , "%d/%m/%Y" ) as data_solicitacao  
+        DATE_FORMAT(orderservice.data_hora , "%d/%m/%Y" ) as data_solicitacao,
+        estimate.value as value,
+        status.name as status,
+        status.description as statusDescricao
         FROM orderservice
         left join equipaments ON equipaments.id = orderservice.equipaments_id
         left join peoples on peoples.id = orderservice.peoples_id
-        WHERE peoples.id=' . $user);
+        left join estimate on estimate.id = orderservice.estimate_id
+        left join status on status.id = orderservice.status_id');
 
-        $orderServicesrequested =  DB::select('SELECT 
-        count(orderservice.id) as order_all
+        if($perfil =='Cliente'){
+            $Result = ($sql . ' WHERE peoples.id =' . $user);
+        }else{
+            $Result = ($sql);
+        }        
+        $orderServices = DB::select($Result); 
+
+
+        $sql = ('SELECT 
+        orderservice.id as order_all
+        FROM orderservice
+        left join peoples on peoples.id = orderservice.peoples_id');
+
+        if($perfil =='Cliente'){
+            $Result = ($sql . ' WHERE peoples.id =' . $user);
+        }else{
+            $Result = ($sql);
+        }        
+        $orderServicesrequested = DB::select($Result);
+
+        $sql = ('SELECT 
+        orderservice.id as order_all
         FROM orderservice
         left join peoples on peoples.id = orderservice.peoples_id
-        WHERE peoples.id=' . $user);
+        WHERE orderservice.status_id = 6');
+
+        if($perfil =='Cliente'){
+            $Result = ($sql . ' AND peoples.id =' . $user);
+        }else{
+            $Result = ($sql);
+        }        
+        $orderServicesrealized = DB::select($Result);
 
         $Usuarios = DB::select('SELECT * FROM users'); 
         $Clientes = DB::select('SELECT * FROM peoples WHERE peoples.profile = 2 '); 
@@ -55,6 +88,7 @@ class HomeController extends Controller
             'Clientes' => $Clientes,
             'orderServices' => $orderServices,
             'orderServicesrequested' => $orderServicesrequested,
+            'orderServicesrealized' => $orderServicesrealized,
             ]);
     }
 }
