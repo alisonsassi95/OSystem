@@ -56,6 +56,11 @@ class DatabaseSeeder extends Seeder
             ['id' => 1, 'problem' => 'está muito Lento', 'data_hora' => '2020-06-02 10:00:00', 'equipaments_id' => '1', 'peoples_id' => 1, 'estimate_id' => '1', 'status_id' => '6'],
             ['id' => 2, 'problem' => 'Muito Lento', 'data_hora' => '2020-07-02 17:00:00', 'equipaments_id' => '2', 'peoples_id' => 1, 'estimate_id' => '2', 'status_id' => '4'],
             ['id' => 3, 'problem' => 'Quebrou a tela','data_hora' => '2020-05-01 12:00:00', 'equipaments_id' => '3', 'peoples_id' => 1, 'estimate_id' => '3', 'status_id' => '5']
+        ]); 
+        DB::table('contact')->insert([
+            ['id' => 1, 'name' => 'Nvidea', 'cnpj' => '52632563256325', 'contact_phone' => '333333555', 'email' => 'nvidea@nvidea.com', 'description' => 'Vocês são demais! gostaríamos de patrocinar qualque coisa que forem fazer.'],
+            ['id' => 2, 'name' => 'UNIJUI', 'cnpj' => '526324234234234', 'contact_phone' => '55555333', 'email' => 'unijui@unijui.com', 'description' => 'Vocês fizeram diferença na Faculdade, por pouco não descobrem a cura do cancer!'],
+            ['id' => 3, 'name' => 'Intel','cnpj' => '32423423422434234', 'contact_phone' => '78789789', 'email' => 'intel@intel.com', 'description' => 'You guys are awesome! we would like to sponsor anything we do first.']
         ]);
     }
 }

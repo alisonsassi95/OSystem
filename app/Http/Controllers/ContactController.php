@@ -30,25 +30,20 @@ class ContactController extends Controller
         $Contacts = Contact::all();
         return view('Contact.index',['Contacts' => $Contacts]);
     }
-    // Função responsavel por trazer a tela de cadastro de Contactos
-    public function add()
-    {
-        $user = auth()->user()->people_id;
-        $results = user::all();
-        return view('Contact.add', ['results' => $results,'user' => $user]);
-    }
+    
     // Função Responsavel por salvar um novo Contacto no banco
     public function save(\App\Requests\ContactRequest $request)
     {
         $insert = 0;
         try{
+            dd($request->all());
             $insert = Contact::create($request->all());
         }catch(Exception $e){
             echo('Erro!');
         }finally{
             if ($insert){
             return redirect()
-                ->route('Contact.index')
+                ->route('login')
                 ->with('success', 'Cadastrado com Sucesso!');
             }
         }

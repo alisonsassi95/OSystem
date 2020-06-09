@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('main');
     
 });
-    Route::get('RegisterForm', 'RegisterController@RegisterForm')->name('RegisterForm');
+    
    
 
     route::view('/main', "index.main")->name('main');
@@ -24,8 +24,8 @@ Route::get('/', function () {
     route::view('/contact', "index.contact")->name('contact');
     route::view('/prices', "index.prices")->name('prices');
     route::view('/register', "index.register")->name('register');
-
-    //Route::get('/main', 'Auth\RegisterController@main')->name('main');
+    Route::post('/Contact/save', ['uses'=>'ContactController@save', 'as' => 'Contact.save']);
+    Route::get('RegisterForm', 'RegisterController@RegisterForm')->name('RegisterForm');
     Route::get('/login', 'Auth\LoginController@isLogged')->name('login');
     Route::post('/authentication', 'Auth\LoginController@authentication')->name('authentication');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -44,9 +44,6 @@ Route::group( [ 'middleware' => 'auth'], function()
 
     Route::post('/Profile/update/{id}', ['uses'=>'UserController@updateProfile', 'as' => 'User.updateProfile']);
     Route::post('/perfil', ['uses'=>'UserController@perfilAtualiza','as'=>'User.perfilAtualiza']);
-
-    //Tipo de Exame 
-    Route::post('/equipament/add/examtype', ['uses'=>'examtypeController@save', 'as' => 'examtype.save']);
 
     //Routes user
     Route::get('/User', ['uses'=>'UserController@index', 'as' => 'User.index']);
@@ -76,8 +73,7 @@ Route::group( [ 'middleware' => 'auth'], function()
 
      //Contact
      Route::get('/Contact', ['uses'=>'ContactController@index', 'as' => 'Contact.index']);  
-     Route::get('/Contact/add', ['uses'=>'ContactController@add', 'as' => 'Contact.add']);
-     Route::post('/Contact/save', ['uses'=>'ContactController@save', 'as' => 'Contact.save']);
+     
      Route::get('/Contact/edit/{id}', ['uses'=>'ContactController@edit', 'as' => 'Contact.edit']);
      Route::put('/Contact/update/{id}', ['uses'=>'ContactController@update', 'as' => 'Contact.update']);
      Route::get('/Contact/delete/{id}', ['uses'=>'ContactController@delete', 'as' => 'Contact.delete']);
@@ -85,7 +81,6 @@ Route::group( [ 'middleware' => 'auth'], function()
      //Order services
      Route::get('/orderService', ['uses'=>'orderServiceController@index', 'as' => 'orderService.index']);  
      Route::get('/orderService/add', ['uses'=>'orderServiceController@add', 'as' => 'orderService.add']);
-     Route::get('/orderService/menu', ['uses'=>'orderServiceController@menu', 'as' => 'orderService.menu']);
      Route::post('/orderService/save', ['uses'=>'orderServiceController@save', 'as' => 'orderService.save']);
      Route::get('/orderService/edit/{id}', ['uses'=>'orderServiceController@edit', 'as' => 'orderService.edit']);
      Route::put('/orderService/update/{id}', ['uses'=>'orderServiceController@update', 'as' => 'orderService.update']);
