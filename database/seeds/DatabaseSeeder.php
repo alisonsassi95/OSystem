@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             ['id' => 5, 'name' => 'Negado', 'description' => 'Cliente  Negou o orçamento.'],
             ['id' => 6, 'name' => 'Equipamento Pronto', 'description' => 'Cliente pode retirar.']
 
-
         ]);
       
         DB::table('profiles')->insert([
