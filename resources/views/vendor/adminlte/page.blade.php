@@ -58,7 +58,7 @@
                     <ul class="nav navbar-nav">
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">                
-                                <span>{{ Auth::user()->name ?? 'ronei' }}</span>  
+                                <span>{{ Auth::user()->name ?? 'user' }}</span>  
                                 <i class="fa fa-fw fa-power-off"></i>
                                 <i class="icon-submenu lnr lnr-chevron-down"></i>
                             </a>

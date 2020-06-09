@@ -30,12 +30,12 @@ class CreateorderServiceTable extends Migration
             $table->foreign('peoples_id')->references('id')->on('peoples');
             // Chave estrangeira de UsuÃ¡rio 
             //Chave estrangeira de Orcamento
-            //$table->integer('orcamento_id')->unsigned()->nullable();
-            //$table->foreign('orcamento_id')->references('id')->on('orcamento');
+            $table->integer('estimate_id')->unsigned()->nullable();
+            $table->foreign('estimate_id')->references('id')->on('estimate');
             // Chave estrangeira de Orcamento 
             //Chave estrangeira de Status
-            //$table->integer('status_id')->unsigned()->nullable();
-            //$table->foreign('status_id')->references('id')->on('situacao');
+            $table->integer('status_id')->unsigned()->nullable();
+            $table->foreign('status_id')->references('id')->on('status');
             // Chave estrangeira de Status 
             $table->timestamps();
             $table->softDeletes();

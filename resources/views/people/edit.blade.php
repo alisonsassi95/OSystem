@@ -185,34 +185,6 @@
         </div>
     </div>
 </div>
-                    <!-- Inicio Modal -->
-                    <div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title text-center" id="myModalLabel">Cadastrar Especialidade</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('specialty.save') }}" method="post">
-                                        {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="control-label">Nome:</label>
-                                            <input name="name" type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="control-label">Detalhes:</label>
-                                            <textarea name="description" class="form-control"></textarea>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i >Cadastrar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Fim Modal -->
 @stop
 
 

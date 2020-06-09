@@ -28,9 +28,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $Usuarios = DB::select('SELECT * FROM users');         
+         
+        $user = auth()->user()->people_id;
+        $orderServices = DB::select('SELECT 
+        orderservice.id,
+        peoples.name as peoples, 
+        equipaments.name as equipaments, 
+        orderservice.problem as problem, 
+        DATE_FORMAT(orderservice.data_hora , "%d/%m/%Y" ) as data_solicitacao  
+        FROM orderservice
+        left join equipaments ON equipaments.id = orderservice.equipaments_id
+        left join peoples on peoples.id = orderservice.peoples_id
+        WHERE peoples.id=' . $user);
+
+        $orderServicesrequested =  DB::select('SELECT 
+        count(orderservice.id) as order_all
+        FROM orderservice
+        left join peoples on peoples.id = orderservice.peoples_id
+        WHERE peoples.id=' . $user);
+
+        $Usuarios = DB::select('SELECT * FROM users'); 
+        $Clientes = DB::select('SELECT * FROM peoples WHERE peoples.profile = 2 '); 
+
         return view('home', [
             'Usuarios' => $Usuarios,
+            'Clientes' => $Clientes,
+            'orderServices' => $orderServices,
+            'orderServicesrequested' => $orderServicesrequested,
             ]);
     }
 }

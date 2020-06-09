@@ -13,13 +13,17 @@
 
 Route::get('/', function () {
     return redirect('main');
+    
 });
+    Route::get('RegisterForm', 'RegisterController@RegisterForm')->name('RegisterForm');
+   
 
     route::view('/main', "index.main")->name('main');
     route::view('/whoareus', "index.whoareus")->name('whoareus');
     route::view('/ourservices', "index.ourservices")->name('ourservices');
     route::view('/contact', "index.contact")->name('contact');
     route::view('/prices', "index.prices")->name('prices');
+    route::view('/register', "index.register")->name('register');
 
     //Route::get('/main', 'Auth\RegisterController@main')->name('main');
     Route::get('/login', 'Auth\LoginController@isLogged')->name('login');
@@ -34,17 +38,12 @@ Route::get('/', function () {
 Route::group( [ 'middleware' => 'auth'], function()
 {
 
-
-    Route::group( [ 'middleware' => 'auth'], function() 
-    {
-
     Route::view('/Profile', 'profile')->name('profile')->middleware('auth'); 
     Route::get('/Profile', ['uses'=>'UserController@profile', 'as' => 'profile']);
     Route::post('/Profile', ['uses'=>'UserController@profile', 'as' => 'profile']);
 
     Route::post('/Profile/update/{id}', ['uses'=>'UserController@updateProfile', 'as' => 'User.updateProfile']);
     Route::post('/perfil', ['uses'=>'UserController@perfilAtualiza','as'=>'User.perfilAtualiza']);
-    });
 
     //Tipo de Exame 
     Route::post('/equipament/add/examtype', ['uses'=>'examtypeController@save', 'as' => 'examtype.save']);
@@ -61,6 +60,7 @@ Route::group( [ 'middleware' => 'auth'], function()
     Route::get('/people', ['uses'=>'PeopleController@index', 'as' => 'people.index']);
     Route::get('/people/add', ['uses'=>'PeopleController@add', 'as' => 'people.add']);
     Route::post('/people/save', ['uses'=>'PeopleController@save', 'as' => 'people.save']);
+    
     Route::get('/people/edit/{id}', ['uses'=>'PeopleController@edit', 'as' => 'people.edit']);
     Route::put('/people/update/{id}', ['uses'=>'PeopleController@update', 'as' => 'people.update']);
     Route::get('/people/delete/{id}', ['uses'=>'PeopleController@delete', 'as' => 'people.delete']);
@@ -82,15 +82,10 @@ Route::group( [ 'middleware' => 'auth'], function()
      Route::post('/orderService/save', ['uses'=>'orderServiceController@save', 'as' => 'orderService.save']);
      Route::get('/orderService/edit/{id}', ['uses'=>'orderServiceController@edit', 'as' => 'orderService.edit']);
      Route::put('/orderService/update/{id}', ['uses'=>'orderServiceController@update', 'as' => 'orderService.update']);
+     Route::post('/orderService/estimate', ['uses'=>'orderServiceController@estimate', 'as' => 'orderService.estimate']);
      Route::get('/orderService/delete/{id}', ['uses'=>'orderServiceController@delete', 'as' => 'orderService.delete']);
  
     //Usuários
     Route::Post('/people/add/user', ['uses'=>'UserController@save', 'as' => 'user.save']);
-        
-    //------------------------------------------------------------------------------------------------------------------------------------------------------
-    Route::get('/people/detail/{id}', ['uses'=>'PeopleController@detail', 'as' => 'people.detail']);
-    Route::get('/telefone/add/{id}', ['uses'=>'TelefoneController@add', 'as' => 'telefone.add']);
-    Route::post('/telefone/save/{id}', ['uses'=>'TelefoneController@save', 'as' => 'telefone.save']);
-
    
 });

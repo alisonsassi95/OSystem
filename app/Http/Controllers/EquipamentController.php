@@ -43,8 +43,9 @@ class EquipamentController extends Controller
     // Função responsavel por trazer a tela de cadastro de equipamentos
     public function add()
     {
+        $user = auth()->user()->people_id;
         $results = user::all();
-        return view('equipament.add', ['results' => $results]);
+        return view('equipament.add', ['results' => $results,'user' => $user]);
     }
     // Função Responsavel por salvar um novo equipamento no banco
     public function save(\App\Requests\EquipamentRequest $request)

@@ -27,24 +27,14 @@
                         <label for="profile" >Perfil</label>
                         <div required name="profile" class="auto-control" required autofocus>
                         <select class="form-control"  id = "profile" name="profile" onchange="habilitaBtn()">
-                            @if($people->profile == '4')
-                            <option value= "{{ $people->profile }}" >Paciente</option>
-                            <option value="4">Paciente</option>
-                            @endif
-                            @if($people->profile == '3')
-                            <option value= "{{ $people->profile }}" >Médico</option>
-                            <option value="3">Médico</option>
+                            @if($people->profile == '1')
+                            <option value= "{{ $people->profile }}" >Administrador</option>
+                            <option value="1">Administrador</option>
                             @endif
                             @if($people->profile == '2')
-                            <option value= "{{ $people->profile }}" >Funcionário</option>
-                            <option value="2">Funcionário</option>
+                            <option value= "{{ $people->profile }}" >Cliente</option>
+                            <option value="2">Cliente</option>
                             @endif
-
-                            
-                           
-                            
-
-
                         </select>
                         @if($errors->has('profile'))
                         <span class="help-block">
@@ -52,20 +42,6 @@
                         </span>
                         @endif
                         </div>
-                    </div>
-					<!-- se clicar em Funcionario -->
-                    <div style="display:none" id='funcionario'class="form-group {{$errors->has('name') ? 'has-error' : '' }}">
-                            <label for="office">Cargo</label>
-                            <input id = "cargo" type="text" name="office"  value="{{$people->office}}" class="form-control" placeholder="Descreva o Cargo do Funcionário">
-                            <label for="sector">Setor</label>
-                            <input type="text" name="sector" value="{{$people->sector}}" class="form-control" placeholder="Descreva o setor que trabalha">
-                    </div>
-
-                    <!-- se clicar em Medico -->
-                    <div style="display:none" id='medico'  class="form-group {{$errors->has('name') ? 'has-error' : '' }}">
-                        <label for="crm">CRM</label>
-                        <input type="text" id = "crm" value="{{$people->crm}}" name="crm" class="form-control" placeholder="CRM do Médico">
-                        <label for="specialty_id" value="{{$people->specialty_id}}" class="col-md-auto">Especialidade</label>
                     </div>
 
                     <div class="form-group {{$errors->has('name') ? 'has-error' : '' }}">
@@ -195,71 +171,8 @@
         </div>
     </div>
 </div>
-                    <!-- Inicio Modal -->
-                    <div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title text-center" id="myModalLabel">Cadastrar Especialidade</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('specialty.save') }}" method="post">
-                                        {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="control-label">Nome:</label>
-                                            <input name="name" type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="control-label">Detalhes:</label>
-                                            <textarea name="description" class="form-control"></textarea>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success">Cadastrar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Fim Modal -->
+                   
 @stop
 
 
  
-<!-- validação dos medicos -->
-<script type="text/javascript">
-    function habilitaBtn () {
-        var op = document.getElementById("profile").value;
-
-        if(op == "4") // Paciente
-        {
-            document.getElementById('medico').style.display = 'none';
-            document.getElementById('funcionario').style.display = 'none';
-        }
-
-        if(op == "3") // Medico
-        {
-            document.getElementById('medico').style.display = 'block';
-            document.getElementById('funcionario').style.display = 'none';
-            document.getElementById('crm').required = true;
-        }
-
-        if(op == "2") // Funcionário
-        {
-            document.getElementById('funcionario').style.display = 'block';
-            document.getElementById('medico').style.display = 'none';
-            document.getElementById('cargo').required = true;
-        }
-    }
-
-    //<!-- validação dos medicos -->
-    function addCert() {
-    var lista = document.getElementsByName('certificados[]');
-    var ultimoLista = lista[lista.length - 1];
-    var novoCert = ultimoLista.cloneNode(true);
-    var formPai = ultimoLista.parentNode; //ou document.getElementById('id_do_form');
-    formPai.insertBefore(novoCert, ultimoLista.nextSibling);
-}
-</script>
-<!-- validação dos medicos -->

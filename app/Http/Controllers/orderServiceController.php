@@ -6,6 +6,7 @@ use App\orderService;
 use App\user;
 use App\People;
 use App\Equipament;
+use App\estimate;
 use Illuminate\Http\Request;
 use App\Requests\userRequest;
 use Alert;
@@ -29,6 +30,7 @@ class orderServiceController extends Controller
     {   
         $this->People = $People;
         $this->middleware('auth');
+        dd($People);
     }
 
     public function __constructEq(Equipament $Equipament)
@@ -40,12 +42,26 @@ class orderServiceController extends Controller
     // Função responsavel por trazer todos os orderServiceos cadastrados
     public function index()
     {
-        $People = DB::select('SELECT * FROM peoples');
-        $orderServices = $this->orderServiceModel->paginate(20); // whereNotNull('rg')->
-        $Equipament = DB::select('SELECT * FROM equipaments');
+        $user = auth()->user()->people_id;
+         
+        $orderServices = DB::select('SELECT 
+        orderservice.id,
+        peoples.name as peoples, 
+        equipaments.name as equipaments, 
+        orderservice.problem as problem, 
+        DATE_FORMAT(orderservice.data_hora , "%d/%m/%Y" ) as data_solicitacao,
+        estimate.value as value,
+        status.name as status
+        FROM orderservice
+        left join equipaments ON equipaments.id = orderservice.equipaments_id
+        left join peoples on peoples.id = orderservice.peoples_id
+        left join estimate on estimate.id = orderservice.estimate_id
+        left join status on status.id = orderservice.status_id
+        WHERE peoples.id=' . $user); 
+      
+      $StatusAll = DB::select('SELECT * FROM status');
 
-        
-        return view('orderService.index', ['orderServices' => $orderServices,'People' => $People,'Equipament' => $Equipament, ]);
+        return view('orderService.index', ['orderServices' => $orderServices, 'StatusAll' => $StatusAll]);
     }
     //Função responsável por exbibir o menu
     public function menu()
@@ -61,13 +77,17 @@ class orderServiceController extends Controller
     // Função responsavel por trazer a tela de cadastro de orderServiceos
     public function add()
     {
-        $user = user::all();
-        $teste = DB::select('SELECT * FROM peoples WHERE peoples.id = 1');
-        $equipaments = Equipament::all();
-
-        return view('orderService.add', [
-            'user' => $user,          
+        $user = auth()->user()->people_id;
+        $people = People::where('id', $user)->first();
+        $orderServices = $this->orderServiceModel->paginate(20); // whereNotNull('rg')->
+        $equipaments = DB::select('SELECT * FROM equipaments WHERE equipaments.peoples_id =' . $user);
+        
+        // dd($teste);
+        return view('orderService.add', [       
             'equipaments' => $equipaments,
+            'user' => $user,
+            'people' => $people,
+            'orderServices' => $orderServices,
             ]);
     }
     // Função Responsavel por salvar um novo orderServiceo no banco
@@ -76,6 +96,31 @@ class orderServiceController extends Controller
         $insert = 0;
         try{
             $insert = orderService::create($request->all());
+            $orderService = orderService::find($insert->id);
+            $orderService->status_id = '1';
+            $orderService->save();
+
+        }catch(Exception $e){
+            echo('Erro!');
+        }finally{
+            if ($insert){
+            return redirect()
+                ->route('orderService.index')
+                ->with('success', 'Cadastrado com Sucesso!');
+            }
+        }
+    }
+    public function estimate(\App\Requests\estimateRequest $request)
+    {
+        $insert = 0;
+        try{
+            $insert = estimate::create($request->all());
+            
+            $orderService = orderService::find($request->id_solicitacao);
+            $orderService->estimate_id = $insert->id;
+            $orderService->status_id = $request->StatusAll;
+            $orderService->save();
+
         }catch(Exception $e){
             echo('Erro!');
         }finally{
@@ -90,16 +135,14 @@ class orderServiceController extends Controller
     public function edit ($id)
     {
         $orderService = orderService::find($id);
-        $results = user::all();
-        $equipaments = Equipament::all();
         if(!$orderService){
             \Session::flash('flash_message', [
-                'msg'=>"Não existe esse orderServiceo cadastrado, deseja cadastrar um novo orderServiceo?",
+                'msg'=>"Não existe essa Ordem de servico cadastrado, deseja cadastrar um novo orderServiceo?",
                 'class'=>"alert-danger"
             ]);
             return redirect()->back();
         }
-        return view('orderService.edit', ['orderService' => $orderService,'results' => $results, 'equipaments' => $equipaments,]);
+        return view('orderService.edit', ['orderService' => $orderService]);
         
     }
     // Função Responsavel por salvar a edição de um orderServiceo
@@ -117,15 +160,6 @@ class orderServiceController extends Controller
     public function delete($id)
     {
         $orderService = orderService::find($id);
-       
-
-        /*if(!$orderService->deleteTelephone()){
-            \Session::flash('flash_message', [
-                'msg'=>"Registro não pode ser deletado",
-                'class'=>"alert-danger"
-            ]);
-            return redirect()->route('orderService.index');
-        }*/
         
         $orderService->delete();
 

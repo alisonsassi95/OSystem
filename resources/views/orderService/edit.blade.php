@@ -14,17 +14,6 @@
                     {{ csrf_field() }}
                         <input type="hidden" name="_method" value="put">
                         <div class="form-group">
-
-
-                                <div class="form-group">
-                                    <label>Equipamento</label>
-                                    <select class="form-control"  value="{{$equipament->name}}"  name="equipaments_id" id="equipaments_id">
-                                        <option value="">Selecione um Equipamento</option>       
-                                        @foreach($equipaments as $equipaments)
-                                        <option required value="{{ $equipaments->id }}">{{ $equipaments->name }} - Modelo - {{ $equipaments->model }}</option>
-                                            @endforeach
-                                    </select>
-                                </div>
                                 
             
                                 <div class="form-group {{$errors->has('problem') ? 'has-error' : '' }}">

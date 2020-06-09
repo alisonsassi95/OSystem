@@ -45,9 +45,9 @@ class AuthServiceProvider extends ServiceProvider
  
         });
 
-        Gate::define('medic', function ($user) {
+        Gate::define('tec', function ($user) {
 
-            if ($user->profile == 'Médico'){
+            if ($user->profile == 'Técnico'){
                 return true;
             }
  

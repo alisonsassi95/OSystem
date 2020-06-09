@@ -32,12 +32,12 @@
 
     <body>
     <div class="login-box">
-        <div class="login-box-body">
+        <div class="row input-container">
             <p class="login-box-msg">Entre com suas credênciais para logar</p>
             <form action="authentication" method="post">
                 {!! csrf_field() !!}
 
-                <div class="form-group has-feedback {{ $errors->has('user') ? 'has-error' : '' }}">
+                <div class="styled-input wide {{ $errors->has('user') ? 'has-error' : '' }}">
                     <input type="user" name="user" class="form-control" value="{{ old('user') }}"
                            placeholder="Usuário">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -47,7 +47,8 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
+                <br>
+                <div class="styled-input wide {{ $errors->has('password') ? 'has-error' : '' }}">
                     <input type="password" name="password" class="form-control"
                            placeholder="Senha">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -61,8 +62,13 @@
                     <!-- /.col -->
                     <div class="col-xs-4">
                         <button type="submit"
-                                class="btn btn-primary btn-block btn-flat">Login</button>
+                                class="btn-lrg submit-btn">Login</button>
                     </div>
+                    <br>
+                    <br>
+                    <a class="navbar-item" class="active" href="{{ route('register')}}">Cadastre-se</a>
+                    <br>
+                    <p href="">Esqueci minha senha</a></li></p>
                     <!-- /.col -->
                 </div>
             </form>

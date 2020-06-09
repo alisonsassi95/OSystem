@@ -28,4 +28,12 @@ class People extends Model
         'city'
     ];
 
+    public function users(){
+        return $this->hasOne(User::class);
+    }
+
+    public function orderservices(){
+        return $this->hasMany(orderServices::class);
+    }
+
 }

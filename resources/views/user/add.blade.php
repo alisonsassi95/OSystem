@@ -40,14 +40,8 @@
                                     <input readOnly = "true"  type="text" value= "Admininstrador" name="profile"  class="form-control">
                                 @endif
                                 @if( $people->profile == 2)
-                                    <input readOnly = "true" type="text" value= "Funcionário" name="profile"  class="form-control">
-                                @endif
-                                @if( $people->profile == 3)
-                                    <input readOnly = "true" type="text" value= "Médico" name="profile"  class="form-control">
-                                @endif
-                                @if( $people->profile == 4)
-                                <input readOnly = "true" type="text" value= "Cliente" name="profile"  class="form-control">
-                            @endif   
+                                    <input readOnly = "true" type="text" value= "Cliente" name="profile"  class="form-control">
+                                @endif  
                             </div>
                         <div class=" form-group" value= "{{ old('user')}}">
                             <label required for="user">Nome de Login</label>

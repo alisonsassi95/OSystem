@@ -15,10 +15,11 @@
                     <form action="{{ route('orderService.save') }}" method="post">
                     {{ csrf_field() }}
                         
-                    <div class="form-group">
-                        <input  readOnly = "true" type="text" name="peoples_id" value="1" class="form-control">Nome</div>
-                        
-                        
+                        <div  class=" form-group col-md-1">
+                            <input  readOnly = "true" type="text" name="peoples_id" value="{{ $people->id }}" class="form-control"></div>
+                            <h4>Olá {{ $people->name}}, descreva o problema do seu equipamento.</h4>
+                        </div>
+                            
                         <div class="form-group">
                             <label>Equipamento</label>
                             <select class="form-control"  name="equipaments_id" id="equipaments_id">
@@ -35,11 +36,11 @@
                         <div class="form-group {{$errors->has('problem') ? 'has-error' : '' }}">
                             <label for="problem">Problema</label>
                             <input type="text" name="problem" class="form-control" placeholder="Problema da orderServiceo">
-                        @if($errors->has('problem'))
-                        <span class="help-block">
-                            <strong>{{$errors->first('problem')}}</strong>
-                        </span>
-                        @endif
+                            @if($errors->has('problem'))
+                            <span class="help-block">
+                                <strong>{{$errors->first('problem')}}</strong>
+                            </span>
+                            @endif
                         </div>
 
                         <div class=" form-group col-md-3" value="{{ old('data_hora') }}">
@@ -54,9 +55,8 @@
 
                        
                         <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Criar ordem de serviço</button> 
+
                     </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -72,6 +72,9 @@
                                                 <form action=" {{ route('equipament.saveModal') }}" method="post">
                                                     {{ csrf_field() }}
                                                     
+                                                    <div class="form-group {{$errors->has('peoples_id') ? 'has-error' : '' }}">
+                                                        <input readOnly = "true" type="text" name="peoples_id" class="form-control" value="{{$user}}">
+                                                    </div>
                                                     <div class="form-group {{$errors->has('name') ? 'has-error' : '' }}">
                                                     <label for="name">Nome</label>
                                                     <input type="text" name="name" class="form-control" placeholder="Nome do Equipamento">

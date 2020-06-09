@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEquipamentsTable extends Migration
+class CreateEstimateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateEquipamentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipaments', function (Blueprint $table) {
+        Schema::create('estimate', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->string('name', 45)->nullable(); 
-            $table->string('mark', 45)->nullable();
-            $table->string('model', 45)->nullable(); 
-            $table->string('serialnumber', 50)->unique();
-            $table->text('description')->nullable(); 
-            $table->boolean('active')->default(true); 
+            $table->string('service')->nullable();
+            $table->decimal('value');
+            $table->DATETIME('data_estimate')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +31,6 @@ class CreateEquipamentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipaments');
+        Schema::dropIfExists('estimate');
     }
 }
