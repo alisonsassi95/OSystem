@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content')
-
+@include('sweet::alert')
 
 <body class="hold-transition skin-blue sidebar-mini">
   <!-- Content Wrapper. Contains page content -->
@@ -48,11 +48,11 @@
                                 <td>{{ $orderService->data_solicitacao }}</td>
                                 <td>{{ $orderService->equipaments }}</td>
                                 <td>{{ $orderService->problem }}</td>
-                                <td>{{ $orderService->value }}</td>
+                                <td data-toggle="tooltip" title="{{$orderService->service}}" >{{ $orderService->value }}</td>
                                 <td data-toggle="tooltip" title="{{$orderService->statusDescricao}}" >{{ $orderService->status }}</td>
                                 <td>
-                                <a class="btn btn-default" href=""><i class="glyphicon glyphicon-edit"></i > Sim</a>
-                                <a class="btn btn-default" href=""><i class="glyphicon glyphicon-edit"></i > Não</a>
+                                <a class="btn btn-default" href="javascript:(confirm('Tem certeza que deseja Aprovar esse Serviço?') ? window.location.href='{{route('orderService.aprovar',$orderService->id)}}' : false)"><i class="glyphicon glyphicon-edit"></i > Sim</a>
+                                <a class="btn btn-default" href="javascript:(confirm('Tem certeza que NÃO irá realizar o serviço?') ? window.location.href='{{route('orderService.negar',$orderService->id)}}' : false)"></i class="glyphicon glyphicon-edit" > Não</a>
                                 </td>    
                             <tr>
                         @endforeach

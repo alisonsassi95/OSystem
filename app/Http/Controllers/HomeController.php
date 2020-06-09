@@ -39,6 +39,7 @@ class HomeController extends Controller
         orderservice.problem as problem, 
         DATE_FORMAT(orderservice.data_hora , "%d/%m/%Y" ) as data_solicitacao,
         estimate.value as value,
+        estimate.service as service,
         status.name as status,
         status.description as statusDescricao
         FROM orderservice
@@ -80,6 +81,19 @@ class HomeController extends Controller
         }        
         $orderServicesrealized = DB::select($Result);
 
+        $sql = ('SELECT 
+        orderservice.id as order_all
+        FROM orderservice
+        left join peoples on peoples.id = orderservice.peoples_id
+        WHERE orderservice.status_id = 5');
+
+        if($perfil =='Cliente'){
+            $Result = ($sql . ' AND peoples.id =' . $user);
+        }else{
+            $Result = ($sql);
+        }        
+        $orderServicesblocked = DB::select($Result);
+
         $Usuarios = DB::select('SELECT * FROM users'); 
         $Clientes = DB::select('SELECT * FROM peoples WHERE peoples.profile = 2 '); 
 
@@ -89,6 +103,7 @@ class HomeController extends Controller
             'orderServices' => $orderServices,
             'orderServicesrequested' => $orderServicesrequested,
             'orderServicesrealized' => $orderServicesrealized,
+            'orderServicesblocked' => $orderServicesblocked,
             ]);
     }
 }

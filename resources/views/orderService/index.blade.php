@@ -71,21 +71,11 @@
                                             <div class="modal-body">
                                                 <form action=" {{ route('orderService.estimate') }}" method="post">
                                                     {{ csrf_field() }}
-                                                    
+                                                   
                                                     <div class="form-group">
-                                                    <label for="name">Id Solicitaçao</label>
-                                                        <select class="form-control" name = 'orderServices'>     
-                                                            @foreach($orderServices as $orderServices)
-                                                            <option readOnly = "true" id = 'id_solicitacao' value="{{ $orderServices->id }}"></option>
-                                                                @endforeach
-                                                        </select>
-                                                        @if($errors->has('id_solicitacao'))
-                                                    <span class="help-block">
-                                                        <strong>{{$errors->first('id_solicitacao')}}</strong>
-                                                    </span>
-                                                    @endif
-                                                     </div>
-
+                                                        <label for="name">Id Solicitaçao</label>
+                                                        <input type="text" name="id_solicitacao" value="{{ $orderService->id }}"class="form-control">
+                                                    </div>
 
                                                     <div class="form-group {{$errors->has('service') ? 'has-error' : '' }}">
                                                     <label for="name">Serviço</label>

@@ -44,6 +44,7 @@ class orderServiceController extends Controller
     {
         $user = auth()->user()->people_id;
         $perfil = auth()->user()->profile;
+        
         $sql = ('SELECT 
         orderservice.id,
         peoples.name as peoples, 
@@ -175,6 +176,30 @@ class orderServiceController extends Controller
         alert()->success('', 'Deletado com Sucesso')->persistent('OK');
 
         return redirect()->route('orderService.index');        
+        
+    }
+    // Função Responsavel pela exclusão de um orderServiceo
+    public function aprovar($id)
+    {
+        $orderService = orderService::find($id);   
+        $orderService->status_id = '4';
+        $orderService->save();
+
+        return redirect()
+                ->route('home')
+                ->with('success', 'O orçamento está Aprovado!');
+        
+    }
+    // Função Responsavel pela exclusão de um orderServiceo
+    public function negar($id)
+    {
+        $orderService = orderService::find($id);   
+        $orderService->status_id = '5';
+        $orderService->save();
+
+        return redirect()
+                ->route('home')
+                ->with('info', 'O orçamento está Negado!');    
         
     }
 }

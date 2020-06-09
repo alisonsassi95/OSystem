@@ -84,6 +84,8 @@ Route::group( [ 'middleware' => 'auth'], function()
      Route::put('/orderService/update/{id}', ['uses'=>'orderServiceController@update', 'as' => 'orderService.update']);
      Route::post('/orderService/estimate', ['uses'=>'orderServiceController@estimate', 'as' => 'orderService.estimate']);
      Route::get('/orderService/delete/{id}', ['uses'=>'orderServiceController@delete', 'as' => 'orderService.delete']);
+     Route::get('/orderService/aprovar/{id}', ['uses'=>'orderServiceController@aprovar', 'as' => 'orderService.aprovar']);
+     Route::get('/orderService/negar/{id}', ['uses'=>'orderServiceController@negar', 'as' => 'orderService.negar']);
  
     //Usuários
     Route::Post('/people/add/user', ['uses'=>'UserController@save', 'as' => 'user.save']);
