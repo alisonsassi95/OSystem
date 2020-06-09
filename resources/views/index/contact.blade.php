@@ -35,7 +35,7 @@
 
     <body>
         <div class="row input-container">
-            <form action="">
+        <form action="{{ route('UContact.save') }}" method="post">
                 <div class="styled-input wide">
                     <input type="text" name="name" id="name" placeholder="Nome" value="" data-use-type="STRING" maxlength="30" required>
                 </div>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="styled-input" style="float:right;">
-                    <input type="text" type="contact" name="contact" id="contact" placeholder="Telefone" maxlength="50" required>
+                    <input type="text" type="contact" name="contact_phone" id="contact_phone" placeholder="Telefone" maxlength="50" required>
                 </div>
 
                 <div class="styled-input wide" style="float:right;">
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="styled-input wide">
-                    <textarea type="textarea" cols="50" rows="8" name="mensagem" id="mensagem" placeholder="Digite sua mensagem aqui!" value="" maxlength="255" required></textarea>
+                    <textarea type="textarea" cols="50" rows="8" name="description" id="description" placeholder="Digite sua mensagem aqui!" value="" maxlength="255" required></textarea>
                 </div>
 
                 <button class="btn-lrg submit-btn">Enviar</button>

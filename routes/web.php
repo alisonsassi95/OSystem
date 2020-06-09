@@ -68,12 +68,19 @@ Route::group( [ 'middleware' => 'auth'], function()
      //Equipamentos
      Route::get('/equipament', ['uses'=>'EquipamentController@index', 'as' => 'equipament.index']);  
      Route::get('/equipament/add', ['uses'=>'EquipamentController@add', 'as' => 'equipament.add']);
-     Route::get('/equipament/menu', ['uses'=>'EquipamentController@menu', 'as' => 'equipament.menu']);
      Route::post('/equipament/save', ['uses'=>'EquipamentController@save', 'as' => 'equipament.save']);
      Route::post('/equipament/saveModal', ['uses'=>'EquipamentController@saveModal', 'as' => 'equipament.saveModal']);
      Route::get('/equipament/edit/{id}', ['uses'=>'EquipamentController@edit', 'as' => 'equipament.edit']);
      Route::put('/equipament/update/{id}', ['uses'=>'EquipamentController@update', 'as' => 'equipament.update']);
      Route::get('/equipament/delete/{id}', ['uses'=>'EquipamentController@delete', 'as' => 'equipament.delete']);
+
+     //Contact
+     Route::get('/Contact', ['uses'=>'ContactController@index', 'as' => 'Contact.index']);  
+     Route::get('/Contact/add', ['uses'=>'ContactController@add', 'as' => 'Contact.add']);
+     Route::post('/Contact/save', ['uses'=>'ContactController@save', 'as' => 'Contact.save']);
+     Route::get('/Contact/edit/{id}', ['uses'=>'ContactController@edit', 'as' => 'Contact.edit']);
+     Route::put('/Contact/update/{id}', ['uses'=>'ContactController@update', 'as' => 'Contact.update']);
+     Route::get('/Contact/delete/{id}', ['uses'=>'ContactController@delete', 'as' => 'Contact.delete']);
  
      //Order services
      Route::get('/orderService', ['uses'=>'orderServiceController@index', 'as' => 'orderService.index']);  

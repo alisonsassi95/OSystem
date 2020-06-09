@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Equipament extends Model
+class Contact extends Model
 {
     //Declaração de arquivos protegidos e não protegidos
-    protected $table = 'equipaments';
+    protected $table = 'contact';
     protected $fillable = [
         'name',
-        'model',
-        'mark',
-        'serialnumber',
-        'active',
-        'peoples_id',
+        'cnpj',
+        'contact_phone',
+        'email',
         'description',  
     ];
 

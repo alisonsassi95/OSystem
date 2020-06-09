@@ -158,6 +158,12 @@ return [
             'url'  => '/equipament',
             'can'  => 'adm',
         ],
+        [
+            'text' => 'Contatos Parceiros',
+            'icon' => 'smile-o',
+            'url'  => '/Contact',
+            'can'  => 'adm',
+        ],
     ],
 
     /*
