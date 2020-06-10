@@ -74,6 +74,9 @@
                                                    
                                                     <div class="form-group">
                                                         <label for="name">Id Solicitaçao</label>
+                                                        @if(isset($orderService->id)) {
+                                                            <input type="text" name="id_solicitacao" class="form-control">
+                                                        }
                                                         <input type="text" name="id_solicitacao" value="{{ $orderService->id }}"class="form-control">
                                                     </div>
 

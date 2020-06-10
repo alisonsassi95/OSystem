@@ -35,7 +35,7 @@
 
     <body>
         <div class="row input-container">
-        <form action="{{ route('Contact.save') }}" method="post">
+        <form action="{{ route('ContactForm') }}" method="get">
                 <div class="styled-input wide">
                     <input type="text" name="name" id="name" placeholder="Nome" value="" data-use-type="STRING" maxlength="30" required>
                 </div>

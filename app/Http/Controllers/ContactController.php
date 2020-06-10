@@ -32,8 +32,10 @@ class ContactController extends Controller
     }
     
     // Função Responsavel por salvar um novo Contacto no banco
-    public function save(\App\Requests\ContactRequest $request)
+    public function saveForm(Request $request)
     {
+        dd($request);
+
         $insert = 0;
         try{
             dd($request->all());

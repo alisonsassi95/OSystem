@@ -27,7 +27,7 @@
     <div class="cards">
         
             <div class="card">
-                <a class="cards_a" href="prices.html"> 
+                <a class="cards_a" href="{{ route('prices')}}"> 
                     <img src="{!! asset('imagens/servicos/virus.png')!!}" alt="Avatar">
                     <div class="container">
                         <h4>Remoção de</h4>
@@ -38,7 +38,7 @@
 
 
             <div class="card">
-                <a class="cards_a" href="prices.html">
+                <a class="cards_a" href="{{ route('prices')}}">
                     <img src="{!! asset('imagens/servicos/formatar.png')!!}" alt="Avatar">
                     <div class="container">
                         <h4>Formatação de</h4>
@@ -48,7 +48,7 @@
             </div>
 
             <div class="card">
-                <a class="cards_a" href="prices.html">
+                <a class="cards_a" href="{{ route('prices')}}">
                     <img src="{!! asset('imagens/servicos/hardware.png')!!}" alt="Avatar">
                     <div class="container">
                         <h4>Manutenção de</h4>

@@ -13,7 +13,6 @@
 
 Route::get('/', function () {
     return redirect('main');
-    
 });
     
    
@@ -24,10 +23,11 @@ Route::get('/', function () {
     route::view('/contact', "index.contact")->name('contact');
     route::view('/prices', "index.prices")->name('prices');
     route::view('/register', "index.register")->name('register');
-    Route::post('/Contact/save', ['uses'=>'ContactController@save', 'as' => 'Contact.save']);
-    Route::get('/Contact', ['uses'=>'ContactController@index', 'as' => 'Contact.index']);  
 
-    Route::get('RegisterForm', 'RegisterController@RegisterForm')->name('RegisterForm');
+    Route::get('/ContactForm', 'ContactController@saveForm')->name('ContactForm');
+
+    Route::get('RegisterForm', 'Auth\RegisterController@RegisterForm')->name('RegisterForm');
+
     Route::get('/login', 'Auth\LoginController@isLogged')->name('login');
     Route::post('/authentication', 'Auth\LoginController@authentication')->name('authentication');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -75,7 +75,6 @@ Route::group( [ 'middleware' => 'auth'], function()
 
      //Contact
      Route::get('/Contact', ['uses'=>'ContactController@index', 'as' => 'Contact.index']);  
-     Route::post('/Contact/save', ['uses'=>'ContactController@save', 'as' => 'Contact.save']); 
      Route::get('/Contact/edit/{id}', ['uses'=>'ContactController@edit', 'as' => 'Contact.edit']);
      Route::put('/Contact/update/{id}', ['uses'=>'ContactController@update', 'as' => 'Contact.update']);
      Route::get('/Contact/delete/{id}', ['uses'=>'ContactController@delete', 'as' => 'Contact.delete']);
