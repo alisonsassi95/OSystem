@@ -103,8 +103,6 @@ class UserController extends Controller
                 return redirect()
                         ->back()
                         ->with('success', 'Cadastrado com Sucesso!');
-            
-       
         
     }
     //Responsavel por trazer a tela de Edição de Usuario

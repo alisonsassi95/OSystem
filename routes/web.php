@@ -15,18 +15,17 @@ Route::get('/', function () {
     return redirect('main');
 });
     
-   
-
     route::view('/main', "index.main")->name('main');
     route::view('/whoareus', "index.whoareus")->name('whoareus');
     route::view('/ourservices', "index.ourservices")->name('ourservices');
     route::view('/contact', "index.contact")->name('contact');
+    route::view('/mensagem', "index.mensagem")->name('mensagem');
     route::view('/prices', "index.prices")->name('prices');
     route::view('/register', "index.register")->name('register');
 
-    Route::get('/ContactForm', 'ContactController@saveForm')->name('ContactForm');
-
     Route::get('RegisterForm', 'Auth\RegisterController@RegisterForm')->name('RegisterForm');
+
+    Route::get('ContactForm', 'Auth\RegisterController@ContactForm')->name('ContactForm');
 
     Route::get('/login', 'Auth\LoginController@isLogged')->name('login');
     Route::post('/authentication', 'Auth\LoginController@authentication')->name('authentication');

@@ -64,29 +64,6 @@ class PeopleController extends Controller
     }
 }
 
-public function saveForm(\App\Http\Requests\PeopleRequest $request)
-{
-    dd('teste');
-
-    
-    $insert = 0;
- 
-    dd($insert);
-    try{
-        $insert = People::create($request->all());
-        $insert = User::create($request->all());
-        return redirect()
-                    ->route('register')
-                    ->with('error', 'Cadastrado com Sucesso!');
-
-   }catch(Exception $e){
-       echo('Erro!');
-       return redirect()
-                    ->route('register')
-                    ->with('error', 'Erro ao cadastrar');
-    }
-}
-
 public function add()
     {   
         return view('people.add');

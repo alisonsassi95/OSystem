@@ -42,7 +42,7 @@
                                 <td>
                                     <a class="btn btn-default" href="{{route('orderService.edit',$orderService->id)}}"><i class="glyphicon glyphicon-edit"></i >Editar</a>
                                     @cannot('user')                               
-                                    <a class="btn btn-primay" type="button" value="Adicionar Novo Equipamento" data-toggle="modal" data-target="#myModalcad"><i class="glyphicon glyphicon-eur"></i >Orçar</a>
+                                    <a class="btn btn-primay" type="button" data-toggle="modal" data-target="#myModalcad_{{$orderService->id}}"><i class="glyphicon glyphicon-eur"></i >Orçar</a>
                                     <a class="btn btn-danger" href="{{route('orderService.delete',$orderService->id)}}' : false)"><i class="glyphicon glyphicon-trash"></i >Deletar</a>
                                     @endcannot('user')
 
@@ -61,7 +61,7 @@
 </div>
 
                             <!-- Inicio Modal -->
-                            <div class="modal fade" id="myModalcad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal fade"  id="myModalcad_{{$orderService->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -74,12 +74,8 @@
                                                    
                                                     <div class="form-group">
                                                         <label for="name">Id Solicitaçao</label>
-                                                        @if(isset($orderService->id)) {
-                                                            <input type="text" name="id_solicitacao" class="form-control">
-                                                        }
                                                         <input type="text" name="id_solicitacao" value="{{ $orderService->id }}"class="form-control">
                                                     </div>
-
                                                     <div class="form-group {{$errors->has('service') ? 'has-error' : '' }}">
                                                     <label for="name">Serviço</label>
                                                     <input type="text" name="service" class="form-control" placeholder="Serviço que que precisa ser realizado">

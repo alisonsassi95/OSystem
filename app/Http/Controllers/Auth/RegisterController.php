@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -77,12 +78,19 @@ class RegisterController extends Controller
 
     public function RegisterForm(Request $request)
     {
-        dd('teste');
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        dd($request->all());
+        User::create($request->all());
+        return redirect()
+                        ->route('mensagem')
+                        ->with('success', 'Sucesso ao atualizar!');
     }
     
+    public function ContactForm(Request $request)
+    {
+        Contact::create($request->all());
+        return redirect()
+                        ->route('mensagem')
+                        ->with('success', 'Sucesso ao atualizar!');
+        
+    }
 }

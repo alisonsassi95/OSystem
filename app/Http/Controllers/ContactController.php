@@ -34,21 +34,8 @@ class ContactController extends Controller
     // Função Responsavel por salvar um novo Contacto no banco
     public function saveForm(Request $request)
     {
-        dd($request);
-
-        $insert = 0;
-        try{
-            dd($request->all());
-            $insert = Contact::create($request->all());
-        }catch(Exception $e){
-            echo('Erro!');
-        }finally{
-            if ($insert){
-            return redirect()
-                ->route('login')
-                ->with('success', 'Cadastrado com Sucesso!');
-            }
-        }
+        dd('teste');
+        
     }
    
     // Função Responsavel por trazer a tela de edição de Contactos

@@ -34,11 +34,10 @@
     </header>
 
     <body>
+    @include('sweet::alert')
         <div class="row input-container">
             <form action="{{ route('RegisterForm') }}" method="get">
                 {{ csrf_field() }}
-
-                <div style="display:none" name="profile" class="auto-control" value="2" required></div>
 
                 <div class="styled-input wide">
                     <input type="text" name="name" id="name" placeholder="Nome" value="" data-use-type="STRING" maxlength="30" required>
