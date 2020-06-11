@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Requests\userRequest;
 use Alert;
 use Illuminate\Support\Facades\DB; // para usar o SQL
+
 class orderServiceController extends Controller
 {
     protected $orderServiceModel;
@@ -66,12 +67,16 @@ class orderServiceController extends Controller
             $Result = ($sql . ' WHERE peoples.id =' . $user);
         }else{
             $Result = ($sql);
-        }        
-        $orderServices = DB::select($Result);  
-      
-      $StatusAll = DB::select('SELECT * FROM status');
+        }  
 
-        return view('orderService.index', ['orderServices' => $orderServices, 'StatusAll' => $StatusAll]);
+        $orderServices = DB::select($Result);  
+        $status = DB::select('SELECT * FROM status');
+
+        return view('orderService.index', [
+            'orderServices' => $orderServices, 
+            'status' => $status,
+        ]);
+
     }
     //Função responsável por exbibir o menu
     public function menu()

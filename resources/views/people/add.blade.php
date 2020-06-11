@@ -80,7 +80,7 @@
 
                         <div class="form-group col-md-2">
                                 <label for="cep">CEP</label>
-                                <input class="form-control" name="cep" type="text" id="cep"  placeholder="99.999-999">
+                                <input class="form-control" name="cep" type="text" id="cep" placeholder="99999-999">
                                 <small class="text-danger"></small>
                         </div>
 
@@ -155,4 +155,3 @@
 
                   
 @stop
-

@@ -5,21 +5,25 @@
 @section('content')
 
 <div class="box box-primary">
- <div class="box-header with-border">
-    <h3 class="box-title">Cadastro de Ordem de Serviço</h3>
- </div>
- <div role="form">
-        <div class="box-body">
+    <div class="box-header with-border">
+        <h3 class="box-title">Cadastro de Ordem de Serviço</h3>
+    </div>
+    
+    <div class="box-body">
+        <div role="form">
             @include('sweet::alert')
 
                     <form action="{{ route('orderService.save') }}" method="post">
                     {{ csrf_field() }}
                         
                         <div  class=" form-group col-md-1">
+                            <label>OS Nº: </label>
                             <input  readOnly = "true" type="text" name="peoples_id" value="{{ $people->id }}" class="form-control"></div>
                             <h4>Seja bem-vindo(a) <b>{{ $people->name}}</b>, estamos sempre dispostos à ajudar.</h4>
                             <h4>Cadastre seu equipamento, e descreva o problema.</h4>
                         </div>
+
+                        <br>
                             
                         <div class="form-group">
                             <label>Equipamento</label>
