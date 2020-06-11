@@ -43,26 +43,13 @@ class PeopleController extends Controller
         return view('people.detail', compact('people'));
     }
 
-    public function save(\App\Http\Requests\PeopleRequest $request)
+    public function save(Request $request, People $people)
     {
-        $insert = 0;
-       try{
-            $insert = People::create($request->all());
 
-       }catch(Exception $e){
-           echo('Erro!');
-    }finally{
-        $tipopessoa = $request->get('profile');
-        if ($insert){    // Verifica se inseriu com sucesso
-            return redirect()
-                        ->route('people.index')
-                        ->with('error', 'Tipo de Pessoa Inválido!');
-        }
-   return redirect()
-                ->route('people.add')
-                ->with('error', 'Dados cadastrais Incompletos!');
+        $people->create($request->all());
+        return redirect()->route('people.index');
+
     }
-}
 
 public function add()
     {   

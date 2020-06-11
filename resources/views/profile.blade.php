@@ -14,7 +14,8 @@
         <label>Atualizar imagem do perfil</label>
             <input type="file" name="avatar">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <input type="submit" class="pull-right btn btn-sm btn-primary"> 	
+            <br>
+            <input type="submit" class="btn btn-sm btn-primary"> 	
         </form>
     </div>
     <form action="{{ route('User.updateProfile', $peoples->id) }}" method="post" enctype="multipart/form-data">
@@ -32,8 +33,7 @@
             {{-- <img class="profile-user-img img-responsive img-circle" src="/imagens/avatar/{{Auth::user()->avatar}}" alt="User profile picture">           
             <h3 class="profile-username text-center">{{$peoples->name}}</h3> --}}
                       <!-- TABLE: LATEST ORDERS -->
-                    <div class="box box-info">
-                        <div class="box-header with-border">
+                    <div class="box-header with-border">
                         <h3 class="box-title">Aqui você pode editar seus dados!</h3>
                         </div>
                         <div class="box-body">
@@ -168,7 +168,6 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                     <button class="btn btn-primary btn-block"> <b><i class="glyphicon glyphicon-save"></i > Salvar</b> </button>

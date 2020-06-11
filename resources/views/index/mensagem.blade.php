@@ -32,7 +32,7 @@
         <br>
         <br>
         <div>
-            <h4>logo entraremos em contato</h2>
+            <h4>Sua mensagem foi enviada, logo entraremos em contato! <br> Obrigado pelo interesse.</h2>
         </div>
     </header>
    
