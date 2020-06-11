@@ -47,7 +47,7 @@ class PeopleController extends Controller
     {
 
         $people->create($request->all());
-        return redirect()->route('people.index')->with('success', 'Pessoa deletada com sucesso!');
+        return redirect()->route('people.index')->with('success', 'Pessoa Cadastrada com sucesso!');
 
     }
 

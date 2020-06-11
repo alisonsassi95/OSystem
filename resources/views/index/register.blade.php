@@ -38,7 +38,17 @@
         <div class="row input-container">
             <form action="{{ route('RegisterForm') }}" method="get">
                 {{ csrf_field() }}
-
+                <div class=" form-group">
+                    <select class="form-control" name = "ativo">
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input  readOnly = "true" type="text" name="people_id" class="form-control" value ="1">
+                </div>
+                <div class="form-group">         
+                                <input readOnly = "true" type="text" value= "Cliente" name="profile"  class="form-control">
+                </div>
                 <div class="styled-input wide">
                     <input type="text" name="name" id="name" placeholder="Nome" value="" data-use-type="STRING" maxlength="30" required>
                 </div>

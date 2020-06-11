@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Contact;
+use App\People;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,10 +79,20 @@ class RegisterController extends Controller
 
     public function RegisterForm(Request $request)
     {
-        dd($request->all());
-        User::create($request->all());
+        if($request['password']!=null){
+            $request['password'] = bcrypt( $request['password']);
+        }else{    
+            unset( $request['password']);
+        }
+        $data = $request->all();
+        $data['profile'] = 2;
+        $people = People::create($data);
+        //Criaçao do Usuário
+        $usuario = $request->all();
+        $usuario['people_id'] = $people->id;
+        User::create($usuario);
         return redirect()
-                        ->route('mensagem')
+                        ->route('login')
                         ->with('success', 'Sucesso ao atualizar!');
     }
     
